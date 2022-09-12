@@ -6,10 +6,10 @@
 
 main() {
 	srand(time(NULL));
-	
-	int num = rand() % 3+1;
-	//가위 1 바위2 보3 
-	int a; 
+
+	int num = rand() % 3 + 1;
+	//가위 1 바위2 보3
+	int a;
 	printf("가위 : 1\n바위 : 2\n보 : 3\n");
 	scanf("%d", &a);
 	switch (a)
@@ -28,7 +28,6 @@ main() {
 		else if (num == 2) printf("짐");
 		else printf("비김");
 
-
 	default:
 
 		break;
@@ -36,7 +35,7 @@ main() {
 	printf("\n");
 	switch (num)
 	{
-	case 1: printf("가위"); 
+	case 1: printf("가위");
 		break;
 	case 2: printf("바위");
 		break;
@@ -45,11 +44,4 @@ main() {
 	default:
 		break;
 	}
-	
-	
-
-
 }
-
-
-

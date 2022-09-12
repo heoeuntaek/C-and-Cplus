@@ -3,8 +3,6 @@
 #include<stdlib.h>
 #include<string.h>
 
-
-
 main() {
 	int i, j;
 	printf("피라미드를 몇 층 까지 쌓으시겠습니까?");
@@ -19,12 +17,4 @@ main() {
 			printf("*");
 		printf("\n");
 	}
-
-
-
-
-
 }
-
-
-
