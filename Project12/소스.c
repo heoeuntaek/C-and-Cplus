@@ -14,8 +14,8 @@ typedef struct{
 	element data[MAX_QUEUE_SIZE];  //현재시각
 	int front;
 	int rear; //도착시간
-}QueueType;
-
+}QueueType; 
+  
 
 void error(char* message)
 {
