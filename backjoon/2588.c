@@ -14,7 +14,7 @@ int main(void) {
 	printf("%d\n", b);
 	printf("%d\n", c);
 	printf("%d\n", mul);
-	
+	 
 	return 0;
 
 	
