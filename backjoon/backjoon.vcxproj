@@ -130,7 +130,10 @@
     <ClCompile Include="10171.c" />
     <ClCompile Include="11382.c" />
     <ClCompile Include="1330.c" />
+    <ClCompile Include="14681.c" />
     <ClCompile Include="2588.c" />
+    <ClCompile Include="2753.c" />
+    <ClCompile Include="2884.c" />
     <ClCompile Include="9498.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
