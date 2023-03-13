@@ -44,7 +44,7 @@ int main() {
 		sum = max * 100;
 	}
 
-	
+		
 	printf("%d", sum);
 
 
