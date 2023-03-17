@@ -3,14 +3,13 @@
 //#include <time.h> // time을 사용하기 위한 헤더파일
 //
 //int main() {
-//	int n;
-//	int time;
-//	scanf("%d", &n);
-//	time = n / 4;
-//	for (int i = 0; i < time; i++) {
-//		printf("long ");
+//	int a, b,c;
+//	scanf("%d", &c);
+//	for (int i = 1; i < c+1; i++) {
+//		scanf("%d %d", &a, &b);
+//		printf("Case #%d: %d\n", i, a + b);
 //	}
-//	printf("int");
+//	
 //
 //	
 //
