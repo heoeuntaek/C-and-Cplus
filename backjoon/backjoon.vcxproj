@@ -129,9 +129,14 @@
   <ItemGroup>
     <ClCompile Include="10171.c" />
     <ClCompile Include="10950.c" />
+    <ClCompile Include="10951.c" />
+    <ClCompile Include="10952.c" />
+    <ClCompile Include="11022.c" />
     <ClCompile Include="11382.c" />
     <ClCompile Include="1330.c" />
     <ClCompile Include="14681.c" />
+    <ClCompile Include="2438.c" />
+    <ClCompile Include="2439.c" />
     <ClCompile Include="2480.c" />
     <ClCompile Include="2525.c" />
     <ClCompile Include="25304.c" />
