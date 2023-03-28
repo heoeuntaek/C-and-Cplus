@@ -127,6 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="10809.c" />
+    <ClCompile Include="11654.c" />
+    <ClCompile Include="11720.c" />
+    <ClCompile Include="9086.c" />
     <ClCompile Include="10171.c" />
     <ClCompile Include="10807.c" />
     <ClCompile Include="10810.c" />
@@ -141,6 +145,7 @@
     <ClCompile Include="11382.c" />
     <ClCompile Include="1330.c" />
     <ClCompile Include="14681.c" />
+    <ClCompile Include="1546.c" />
     <ClCompile Include="2438.c" />
     <ClCompile Include="2439.c" />
     <ClCompile Include="2480.c" />
@@ -150,7 +155,9 @@
     <ClCompile Include="2562.c" />
     <ClCompile Include="2588.c" />
     <ClCompile Include="2739.c" />
+    <ClCompile Include="2743.c" />
     <ClCompile Include="2753.c" />
+    <ClCompile Include="27866.C" />
     <ClCompile Include="2884.c" />
     <ClCompile Include="3052.c" />
     <ClCompile Include="5597.c" />
