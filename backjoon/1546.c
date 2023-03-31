@@ -5,7 +5,7 @@
 //	
 //	float arrafter[30];
 //	scanf("%d", &n);
-//	int arr[999];
+//	int arr[4];
 //	max = -1;
 //	for (int i = 0; i < n; i++) {
 //		scanf("%d", &arr[i]);
