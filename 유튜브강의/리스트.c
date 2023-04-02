@@ -126,6 +126,22 @@ void RelaseList(void) {
 	}
 	g_pHead.next = NULL;
 }
+
+void PushData(char* data) {
+	InsertAtHead(data);
+}
+int PopData(node* pPopNode) {
+	node* sp = g_pHead.next;
+	//sp = stack point
+	if (isEmpty()) {
+		return 0;
+	}
+	memcpy(pPopNode, sp, sizeof(node));
+	g_pHead.next = sp->next;
+	free(sp);
+	return 1;
+
+}
 int main() {
 	/*node list[5];
 	list[0].next = &list[1];
@@ -149,14 +165,11 @@ int main() {
 	//	tmp = tmp->next;
 	//}
 
-
 	InsertAtHead("test1");
 	PrintList();
 	InsertAtHead("test2");
 	PrintList();
 	InsertAtHead("test3");
-
-
 
 	PrintList();
 
@@ -169,8 +182,22 @@ int main() {
 	PrintList();
 
 	//int a =FindData("test1");
+	
+	//stack practice
+	PushData("test4");
+	PushData("test5"); 
+	PushData("test6");
 
+	printf("³ª³ª³ª");
+	node node = { 0 };
+	PopData(&node);
+	printf("Pop : %s\n", node.data);
+	PopData(&node);
+	printf("Pop : %s\n", node.data);
+	PopData(&node);
+	printf("Pop : %s\n", node.data);
 
+	RelaseList();
 
 }
 
