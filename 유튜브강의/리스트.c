@@ -11,6 +11,7 @@ typedef struct NODE {
 
 //node* g_pHead = NULL;
 node g_pHead = { 0 };
+node* g_pTail = 0;
 
 int isEmpty()
 {
@@ -23,6 +24,9 @@ int isEmpty()
 }
 void PrintList(void) {
 
+	if (isEmpty()) {
+		printf("PrintList- 데이터 없음\n");
+	}
 	node* pHead = g_pHead.next;
 	while (pHead != NULL) {
 		printf("%p %s\n", pHead, pHead->data);
@@ -46,7 +50,9 @@ int InsertAtHead(char* pszData) {
 
 	source 복사할 원본 문자열*/
 	if (isEmpty()) {
+		//첫번째 데이터처리
 		g_pHead.next = pNode;
+		g_pTail = pNode;
 	}
 	else {
 		pNode->next = g_pHead.next;
@@ -56,26 +62,35 @@ int InsertAtHead(char* pszData) {
 }
 
 int InsertAtTail(char* pszData) {
-	node* pTmp = &g_pHead;
 
-	//마지막 노드 찾기
-	while (pTmp->next != 0) {
-		pTmp = pTmp->next;
-	}
+	//tail point 떄문에 필요 없어짐
+	//node* pTmp = &g_pHead;
+
+	////마지막 노드 찾기
+	//while (pTmp->next != 0) {
+	//	pTmp = pTmp->next;
+	//}
 
 	//그뒤에 연결
 	node* pNode = (node*)malloc(sizeof(node));
 	memset(pNode, 0, sizeof(node));
 	strcpy_s(pNode->data, sizeof(pNode->data), pszData);
 
-	pTmp->next = pNode;
+	//pTmp->next = pNode;
 
+	if (isEmpty()) 	g_pHead.next = pNode;
+
+	else g_pTail->next = pNode;
+
+
+
+	g_pTail = pNode;
 }
 node* FindData(char* pszData) {
 	node* pCur = g_pHead.next;
 	node* pPrev = &g_pHead;
 	while (pCur != NULL) {
-		if (strcmp(pCur->data, pszData) == 0) {
+		if (strcmp(pCur->data, pszData) == 0) { 
 			return pPrev;
 			//찾은 노드의 앞 노드 주소 반환
 		}
@@ -91,6 +106,8 @@ int DeleteData(char* pszData) {
 		node* pDelete = nPrev->next;
 		nPrev->next = pDelete->next;
 		printf("deletedata(): %s\n", pDelete->data);
+
+		if (pDelete == g_pTail) g_pTail = 0;  //지워지는 게 마지막 노드이면 널값으로 초기화
 		free(pDelete);
 		return 1;
 	}
@@ -116,6 +133,10 @@ int DeleteData(char* pszData) {
 
 
 void RelaseList(void) {
+	if (isEmpty()) {
+		printf("RelaseList- 데이터 없음\n");
+		return 0;
+	}
 	node* pTmp = g_pHead.next;
 	while (pTmp != NULL) {
 		node* delete = pTmp;
@@ -125,6 +146,7 @@ void RelaseList(void) {
 		free(delete);
 	}
 	g_pHead.next = NULL;
+	g_pTail = NULL;
 }
 
 void PushData(char* data) {
@@ -134,70 +156,56 @@ int PopData(node* pPopNode) {
 	node* sp = g_pHead.next;
 	//sp = stack point
 	if (isEmpty()) {
+		printf("pop - 데이터 없음\n");
 		return 0;
 	}
+	
 	memcpy(pPopNode, sp, sizeof(node));
 	g_pHead.next = sp->next;
 	free(sp);
 	return 1;
 
 }
-int main() {
-	/*node list[5];
-	list[0].next = &list[1];
-	list[1].next = &list[2];
-	list[2].next = &list[3];
-	list[3].next = &list[4];
-	list[4].next = NULL;
 
-	list[0].data = 0;
-	list[1].data = 1;
-	list[2].data = 2;
-	list[3].data = 3;
-	list[4].data = 4;*/
-
-
-
-	////출력
-	//node* tmp = &list[0];
-	//while (tmp != NULL) {		
-	//	printf("%p %d\n", tmp, tmp->data);
-	//	tmp = tmp->next;
-	//}
-
-	InsertAtHead("test1");
-	PrintList();
-	InsertAtHead("test2");
-	PrintList();
-	InsertAtHead("test3");
-
-	PrintList();
-
-	RelaseList();
-	/*DeleteData("test3");
-	DeleteData("test2");
-	DeleteData("test1");*/
-
-
-	PrintList();
-
-	//int a =FindData("test1");
+int Enqueue(char* pszData) {
 	
-	//stack practice
-	PushData("test4");
-	PushData("test5"); 
-	PushData("test6");
+	return InsertAtTail(pszData);
+}
 
-	printf("나나나");
+int Dequeue(node* pGetNode) {
+	return PopData(pGetNode);
+}
+int main() {
+
 	node node = { 0 };
 	PopData(&node);
-	printf("Pop : %s\n", node.data);
-	PopData(&node);
-	printf("Pop : %s\n", node.data);
-	PopData(&node);
-	printf("Pop : %s\n", node.data);
 
 	RelaseList();
+
+	printf("---------------\n");
+	Enqueue("test1");
+	Enqueue("test2");
+	Enqueue("test3");
+
+	PrintList();
+
+
+	Dequeue(&node);
+	printf("dequeue : %s\n", node.data);
+
+	PrintList();
+
+	Dequeue(&node);
+	printf("dequeue : %s\n", node.data);
+	PrintList();
+
+
+	Dequeue(&node);
+	printf("dequeue : %s\n", node.data);
+	PrintList();
+
+
+
 
 }
 
