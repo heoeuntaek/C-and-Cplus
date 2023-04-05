@@ -36,6 +36,10 @@ void PrintList(void) {
 //int로 반환하면 장점 o
 int InsertAtHead(const char* pszData)// 포인터가 가리키는 내용이 읽기만 하기떄문(쓰기x)
 {
+	NODE* newNode;
+	memcpy(newNode, 0, sizeof(newNode));
+	strcpy_s()
+
 	return 0;
 }
 
