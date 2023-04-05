@@ -6,7 +6,6 @@ typedef struct NODE {
 	char data[64];
 	struct NODE* next;  //포인터
 
-
 }node;
 
 //node* g_pHead = NULL;
@@ -90,7 +89,7 @@ node* FindData(char* pszData) {
 	node* pCur = g_pHead.next;
 	node* pPrev = &g_pHead;
 	while (pCur != NULL) {
-		if (strcmp(pCur->data, pszData) == 0) { 
+		if (strcmp(pCur->data, pszData) == 0) {
 			return pPrev;
 			//찾은 노드의 앞 노드 주소 반환
 		}
@@ -159,7 +158,7 @@ int PopData(node* pPopNode) {
 		printf("pop - 데이터 없음\n");
 		return 0;
 	}
-	
+
 	memcpy(pPopNode, sp, sizeof(node));
 	g_pHead.next = sp->next;
 	free(sp);
@@ -168,7 +167,7 @@ int PopData(node* pPopNode) {
 }
 
 int Enqueue(char* pszData) {
-	
+
 	return InsertAtTail(pszData);
 }
 
