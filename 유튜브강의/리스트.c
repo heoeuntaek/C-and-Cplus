@@ -9,13 +9,13 @@ typedef struct NODE {
 }node;
 
 //node* g_pHead = NULL;
-node g_pHead = { 0 };
-node* g_pTail = 0;
+node head = { 0 };
+node* tail = 0;
 
 int isEmpty()
 {
 
-	if (g_pHead.next == NULL) {
+	if (head.next == NULL) {
 
 		return 1;
 	}
@@ -26,7 +26,7 @@ void PrintList(void) {
 	if (isEmpty()) {
 		printf("PrintList- 데이터 없음\n");
 	}
-	node* pHead = g_pHead.next;
+	node* pHead = head.next;
 	while (pHead != NULL) {
 		printf("%p %s\n", pHead, pHead->data);
 		pHead = pHead->next;
@@ -50,12 +50,12 @@ int InsertAtHead(char* pszData) {
 	source 복사할 원본 문자열*/
 	if (isEmpty()) {
 		//첫번째 데이터처리
-		g_pHead.next = pNode;
-		g_pTail = pNode;
+		head.next = pNode;
+		tail = pNode;
 	}
 	else {
-		pNode->next = g_pHead.next;
-		g_pHead.next = pNode;
+		pNode->next = head.next;
+		head.next = pNode;
 	}
 	return 1;
 }
@@ -77,17 +77,17 @@ int InsertAtTail(char* pszData) {
 
 	//pTmp->next = pNode;
 
-	if (isEmpty()) 	g_pHead.next = pNode;
+	if (isEmpty()) 	head.next = pNode;
 
-	else g_pTail->next = pNode;
+	else tail->next = pNode;
 
 
 
-	g_pTail = pNode;
+	tail = pNode;
 }
 node* FindData(char* pszData) {
-	node* pCur = g_pHead.next;
-	node* pPrev = &g_pHead;
+	node* pCur = head.next;
+	node* pPrev = &head;
 	while (pCur != NULL) {
 		if (strcmp(pCur->data, pszData) == 0) {
 			return pPrev;
@@ -106,7 +106,7 @@ int DeleteData(char* pszData) {
 		nPrev->next = pDelete->next;
 		printf("deletedata(): %s\n", pDelete->data);
 
-		if (pDelete == g_pTail) g_pTail = 0;  //지워지는 게 마지막 노드이면 널값으로 초기화
+		if (pDelete == tail) tail = 0;  //지워지는 게 마지막 노드이면 널값으로 초기화
 		free(pDelete);
 		return 1;
 	}
@@ -136,7 +136,7 @@ void RelaseList(void) {
 		printf("RelaseList- 데이터 없음\n");
 		return 0;
 	}
-	node* pTmp = g_pHead.next;
+	node* pTmp = head.next;
 	while (pTmp != NULL) {
 		node* delete = pTmp;
 		pTmp = pTmp->next;
@@ -144,15 +144,15 @@ void RelaseList(void) {
 		printf("Delete: [%p] %s\n", delete, delete->data);
 		free(delete);
 	}
-	g_pHead.next = NULL;
-	g_pTail = NULL;
+	head.next = NULL;
+	tail = NULL;
 }
 
 void PushData(char* data) {
 	InsertAtHead(data);
 }
 int PopData(node* pPopNode) {
-	node* sp = g_pHead.next;
+	node* sp = head.next;
 	//sp = stack point
 	if (isEmpty()) {
 		printf("pop - 데이터 없음\n");
@@ -160,7 +160,7 @@ int PopData(node* pPopNode) {
 	}
 
 	memcpy(pPopNode, sp, sizeof(node));
-	g_pHead.next = sp->next;
+	head.next = sp->next;
 	free(sp);
 	return 1;
 
