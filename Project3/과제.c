@@ -9,7 +9,7 @@ typedef struct {
 
 typedef struct NODE {
 	struct NODE* link;
-	int data;
+	int szData;
 } Node;
 
 typedef struct QUEUE {
@@ -27,7 +27,7 @@ Queue* InitQueue(void) { // QUEUE 구조체 포인터를 초기화
 
 void enqueue(Queue* queue, int data) { // 큐에 원하는 데이터를 저장
 	Node* tmp = (Node*)malloc(sizeof(Node));
-	tmp->data = data;
+	tmp->szData = data;
 	tmp->link = NULL;
 	if (queue->count == 0) {
 		queue->front = tmp;
@@ -53,7 +53,7 @@ void dequeue(Queue* queue, int num) {
 		}
 
 		else {
-			printf("dequeued queue (%d) data = %d.\n", count + 1 - (queue->count--), cur->data);
+			printf("dequeued queue (%d) data = %d.\n", count + 1 - (queue->count--), cur->szData);
 			tmp = cur->link;
 			free(cur);
 			cur = tmp;
@@ -70,7 +70,7 @@ void PrintQueue(Queue* queue) {
 	puts("\n큐 프린트");
 
 	while (tmp != NULL) {
-		printf("Queue (%d) data = %d\n", queue->count - (count--), tmp->data);
+		printf("Queue (%d) data = %d\n", queue->count - (count--), tmp->szData);
 		tmp = tmp->link;
 	}
 	puts("큐 프린트 끝");

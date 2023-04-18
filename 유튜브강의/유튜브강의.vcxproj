@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2중 연결리스트.c" />
+    <ClCompile Include="ADT.c" />
     <ClCompile Include="리스트.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
