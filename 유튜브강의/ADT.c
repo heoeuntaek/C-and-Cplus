@@ -6,9 +6,7 @@
 typedef struct NODE {
 	//USERDATA* pData;
 	void* pData;
-
-	//멤버 함수 포인터
-	const char* (*GetKey)(void*);
+	
 
 	struct NODE* prev;
 	struct NODE* next;
@@ -18,27 +16,35 @@ NODE* head;
 NODE* tail;
 int NSize;
 
-int InsertAtHead(void* pParam, const char* (*pfParam)(void*));
-int InsertAtTail(void* pParam, const char* (*pfParam)(void*));
-void InsertBefore(NODE* node, void* pParam, const char* (*pfParam)(void*)); 
+int InsertAtHead(void* pParam);
+int InsertAtTail(void* pParam);
+void InsertBefore(NODE* node, void* pParam); 
 
 
 typedef struct USERDATA {
+	//멤버 함수 포인터
+	const char* (*GetKey)(void*);
+	
+	
 	char name[64];
 	char phone[64];
 }USERDATA;
 
+//함수이고 반환이 char의 point
 const char* GetKeyFromUserData(USERDATA* pUser) {
 	return pUser->name;
 }
 
-void createUserData(const char* pszName, const char* pszPhone) {
+USERDATA* createUserData(const char* pszName, const char* pszPhone) {
 	USERDATA* pNewData = malloc(sizeof(USERDATA));
 	memset(pNewData, 0, sizeof(USERDATA));
 	strcpy_s(pNewData->name, sizeof(pNewData->name), pszName);
 	strcpy_s(pNewData->phone, sizeof(pNewData->phone), pszPhone);
 
-	InsertAtTail(pNewData, GetKeyFromUserData);
+	//구조체 멤버 함수 포인터 초기화
+	pNewData->GetKey = GetKeyFromUserData;
+	//InsertAtTail(pNewData);
+	return pNewData;
 }
 
 
@@ -115,7 +121,11 @@ void PrintList(void) {
 		}
 
 		else {
-			printf("index = %d :  %s\n", idx, node->GetKey(node->pData));
+			USERDATA* pUser = node->pData;
+			printf("index = %d :  %s\n", idx,
+				pUser->GetKey(pUser)
+				//node->GetKey(node->pData)
+			);
 			idx++;
 		}
 		//헤드와 tail 일때
@@ -128,7 +138,7 @@ void PrintList(void) {
 
 
 //int로 반환하면 장점 o
-int InsertAtHead(void* pParam, const char* (*pfParam)(void*))// 포인터가 가리키는 내용이 읽기만 하기떄문(쓰기x)
+int InsertAtHead(void* pParam)// 포인터가 가리키는 내용이 읽기만 하기떄문(쓰기x)
 {
 
 	NODE* pNewNode = malloc(sizeof(NODE));
@@ -140,7 +150,7 @@ int InsertAtHead(void* pParam, const char* (*pfParam)(void*))// 포인터가 가리키�
 	// 관리대상에 대한 초기화
 	pNewNode->pData = pParam;
 
-	pNewNode->GetKey = pfParam;
+	/*pNewNode->GetKey = pfParam;*/
 	//strcpy_s(pNewNode->szData, sizeof(pNewNode->szData), pszData);
 
 	//노드 연결 
@@ -169,8 +179,8 @@ int InsertAtHead(void* pParam, const char* (*pfParam)(void*))// 포인터가 가리키�
 
 }
 
-int InsertAtTail(void* pParam, const char* (*pfParam)(void*)) {
-	InsertBefore(tail, pParam, pfParam);
+int InsertAtTail(void* pParam) {
+	InsertBefore(tail, pParam);
 	return 1;
 
 	//NODE* newNode = (NODE*)malloc(sizeof(NODE));
@@ -202,7 +212,7 @@ int InsertAtTail(void* pParam, const char* (*pfParam)(void*)) {
 
 }
 
-void InsertBefore(NODE* node, void* pParam, const char* (*pfParam)(void*)) {
+void InsertBefore(NODE* node, void* pParam) {
 	NODE* prevNode = node->prev;
 
 	NODE* newNode = malloc(sizeof(NODE));
@@ -210,7 +220,7 @@ void InsertBefore(NODE* node, void* pParam, const char* (*pfParam)(void*)) {
 	//strcpy_s(newNode->szData, sizeof(newNode->szData), pszName);
 
 	newNode->pData = pParam;
-	newNode->GetKey = pfParam;
+	//newNode->GetKey = pfParam;
 
 	newNode->prev = prevNode;
 	newNode->next = node;
@@ -225,9 +235,13 @@ void InsertBefore(NODE* node, void* pParam, const char* (*pfParam)(void*)) {
 
 NODE* FindNode(const char* pszKey) {
 	NODE* pNode = head->next;
+	const char* (*pfGetKey)(void*) = NULL;
 
 	while (pNode != tail) {
-		if (strcmp(pNode->GetKey(pNode->pData), pszKey) == 0) {
+
+		//관리 대상 데이터 구조체 첫번째 멤버가 함수 포인터 임을 가정
+		pfGetKey = pNode->pData;
+		if (strcmp(pfGetKey(pNode->pData), pszKey) == 0) {
 			printf("Find!!\n");
 			return pNode;
 		}
@@ -259,21 +273,21 @@ int GetLength(void) {
 	return GetSize();
 }
 
-int InsertAt(int idx, void* pParam, const char* (*pfParam)(void*)) {
+int InsertAt(int idx, void* pParam) {
 
 	NODE* node = head->next;
 	int i = 0;  //head  = -1  head->next = 0
 
 	while (node != tail) {
 		if (i == idx) {
-			InsertBefore(node, pParam, pfParam);
+			InsertBefore(node, pParam);
 			return i;
 		}
 		node = node->next;
 		i++;
 	}
 	//원하는 인덱스가 없을 경우			  
-	InsertAtTail(pParam, pfParam);
+	InsertAtTail(pParam);
 	return i;
 
 
@@ -304,9 +318,11 @@ int main(void)
 	//printf("여기%s", tail->data);
 	/*InsertAtHead("faf");
 	InsertAtHead("asd");*/
-
-	createUserData("euntaek", "010-9155-9149");
-	createUserData("euntaee", "012-9155-9149");
+	USERDATA* pNewData = NULL;
+	pNewData =createUserData("euntaek", "010-9155-9149");
+	InsertAtTail(pNewData);
+	pNewData = createUserData("euntaee", "012-9155-9149");
+	InsertAtTail(pNewData);
 	
 
 	
