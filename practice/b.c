@@ -2,16 +2,12 @@
 
 
 int main(void) {
-	int num; 
-	printf("±èÈ¯¾¾ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
-	scanf_s("%d", &num);
-	
-	printf("±èÈ¯¾¾ °á°ú´Â ");
-	do {
-		printf("%d", num % 10);  
-		num = num / 10;          
-	} while (num);
-
-		printf("ÀÔ´Ï´Ù.");
+	char a = 'A';
+	if (a >= 'A') {
+		a = a - 'A' + 'a';
 	}
-	
+
+	printf("%c", a);
+
+	return 0;
+}
