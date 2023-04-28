@@ -5,10 +5,12 @@
 //int main() {
 //	int number;
 //	scanf("%d", &number);
-//	int answer = 0;
+//
 //	int sum = 0;
-//	int arrAlpha[26] = { 0, };
+//	
 //	for (int i = 0; i < number; i++) {
+//		int answer = 0;
+//		int arrAlpha[26] = { 0, };
 //		char arr[100];
 //		scanf("%s", arr);
 //		char prev;
@@ -23,14 +25,10 @@
 //					//배열의 이전 항목과 다르다면
 //
 //					if (arrAlpha[alpha] == -1) {
-//						answer--;
-//						arrAlpha[alpha] = -2;  //연속 아님
-//						continue;
-//					}
-//					else if (arrAlpha[alpha] == -2) {
 //						answer = 0;
 //						break;
 //					}
+//					
 //					arrAlpha[prev] = -1; //닫힘
 //				}
 //			}
