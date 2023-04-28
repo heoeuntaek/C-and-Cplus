@@ -138,6 +138,8 @@
     <ClCompile Include="11718.c" />
     <ClCompile Include="11720.c" />
     <ClCompile Include="1193.c" />
+    <ClCompile Include="1316.c" />
+    <ClCompile Include="1316_2.c" />
     <ClCompile Include="2292.c" />
     <ClCompile Include="2444.c" />
     <ClCompile Include="25083.c" />
