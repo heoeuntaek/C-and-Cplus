@@ -11,7 +11,7 @@ int main(void) {
 	int arr[10000] = { a+1 };
 	int b = 0;
 	for (int i = 1; i < a + 1; i++) {
-		if (a % i == 0) {
+		if (a % i == 0) {  
 			arr[b] = i;
 			b++;
 		}
