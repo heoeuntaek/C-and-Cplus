@@ -14,6 +14,7 @@ int main(void) {
 		if (a % i == 0) {  
 			arr[b] = i;
 			b++;
+
 		}
 	}
 	
