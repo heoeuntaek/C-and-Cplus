@@ -193,6 +193,7 @@
     <ClCompile Include="9498.c" />
     <ClCompile Include="11021.c" />
     <ClCompile Include="2908.c" />
+    <ClCompile Include="9506.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="10811.h" />
