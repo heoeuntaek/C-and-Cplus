@@ -4,7 +4,7 @@
 #include <cmath>
 
 using namespace std;
-
+dd
 int main()
 {
 	//첫째 줄에 x, y, w, h가 주어진다.
