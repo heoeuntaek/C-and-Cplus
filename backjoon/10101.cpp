@@ -20,8 +20,8 @@ int main()
 	else if (a + b + c == 180) {
 		if ((a == b && a == c) || (a == c && b == c)) {
 			cout << "Isosceles";
-		}
-
+		}  
+		 
 		else {
 			cout << "Scalene";
 		}
