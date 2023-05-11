@@ -18,9 +18,9 @@ int main()
 		cout << "Equilateral";
 	}
 	else if (a + b + c == 180) {
-		if ((a == b && a == c) || (a == c && b == c)) {
+		if (a==b ||a==c||b==c){
 			cout << "Isosceles";
-		}  
+		}    
 		 
 		else {
 			cout << "Scalene";
@@ -28,11 +28,8 @@ int main()
 
 
 	}
-	else if (a + b + c != 180) {
-		cout << "Error";
-
-	}
 	else {
+		cout << "Error";
 
 	}
 
