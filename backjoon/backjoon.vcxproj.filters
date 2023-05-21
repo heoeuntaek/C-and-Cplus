@@ -246,6 +246,12 @@
     <ClCompile Include="14215.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="24262.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="24263.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="10811.h">
