@@ -5,16 +5,6 @@
 #include <numeric>
 using namespace std;
 int main() {
-	int number;
-	vector<int>v;
-
-	number = 216;
-	for (int i = 0; i < 3; i++) {
-		v.push_back((int)(number % 10));
-		number = number / 10;
-	}
-	for (auto loop : v)
-	{
-		cout << loop;
-	}
+	string a= "12553¾È¸®666";
+	cout << a.find("666");
 }
