@@ -3,8 +3,8 @@
 #include <algorithm> 
 #include <string>
 #include <numeric>
-using namespace std;
-    
+using namespace std;   
+            
 int main()
 {
 	int input;
