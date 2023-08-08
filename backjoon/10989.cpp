@@ -7,21 +7,29 @@ using namespace std;
 
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int number;
-	int a;
-
-	vector<int> v;
 	cin >> number;
+
+	int count[10001] = { 0 };
+
 	for (int i = 0; i < number; i++) {
-
-
+		int a; 
 		cin >> a;
-		v.push_back(a);
+		count[a]++;
 	}
 
-	sort(v.begin(), v.end());
-	for (int i = 0; i < number; i++)
-		cout << v[i] << '\n';
+	for (int i = 1; i < 10001; i++) {
+		for (int j = 0; j < count[i]; j++) {
+			cout << i << '\n';
+		}
+
+	}
+
+
 }
 
 
