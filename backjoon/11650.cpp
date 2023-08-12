@@ -25,7 +25,7 @@ int main()
 	sort(v.begin(), v.end());
 	for (int i = 0; i < count; i++) {
 		cout << v[i].first <<" "<< v[i].second<< endl;;
-	}
+	} 
 
 	
 }
