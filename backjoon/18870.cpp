@@ -43,7 +43,7 @@ int main()
 		//v.emplace	(it, get<0>(v[i]), number, get<2>(v[i]));
 	}
 	sort(v.begin(), v.end(),compare2);
-	for (int i = 0; i < count; i++) {
+	for (int i = 0; i < count; i++) { 
 		cout << get<1>(v[i]) << " ";
 	}
 
