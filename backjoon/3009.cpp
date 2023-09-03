@@ -33,45 +33,36 @@ public:
 
 int main()
 {
-	/*1. 공통되는 것 찾음
-		2. (각각 - 공통)을 공통에서 더함*/
-
-	Point* arr[4];
-	//arr[0], arr[1],arr[2], arr[3]
+	int x[3];
+	int y[3];
 
 	for (int i = 0; i < 3; i++) {
-		int x, y;
-		cin >> x >> y;
-		arr[i] = new Point(x, y);
-	}
-	int max, next;
-	vector<int>v;
-
-	for (int i = 0; i < 3; i++) {
-		v.push_back(arr[i]->getX());
-		v.push_back(arr[i]->getY());
-	}
-	sort(v.begin(), v.end());
-
-	int a, b;
-	for (auto i : v) {
-		a = i;
-		if (a == i) {
-			b = i;
-		}
+		cin >> x[i] >> y[i];
 	}
 
-	for (int i = 0; i < 3; i++) {
-		int x = arr[i]->getX();
-		int y = arr[i]->getY();
-		if (x == a or x == b) {
-			if (y == a or y == b) {
+	if (x[0] == x[1]) {
+		cout << x[2]<<" ";
+	}
+	else if (x[0] == x[2]) {
+		cout << x[1]<<" ";
+	}
+	else {
+		cout << x[0]<<" ";
+	}
 
-			}
-		}
+
+	if (y[0] == y[1]) {
+		cout << y[2]<<" ";
+	}
+	else if (y[0] == y[2]) {
+		cout << y[1]<<" ";
+	}
+	else {
+		cout << y[0]<<" ";
 	}
 
 
 
-	return 0;
+
+return 0;
 }
